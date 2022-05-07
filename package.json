@@ -41,11 +41,7 @@
   "nyc": {
     "exclude": [
       "assets",
-      "contracts",
-      "currencies",
-      "functions",
-      "tests",
-      "data"
+      "tests"
     ],
     "report-dir": "./reports/coverage",
     "temp-dir": "./reports/nyc"
