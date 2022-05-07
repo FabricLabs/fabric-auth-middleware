@@ -4,7 +4,11 @@
   "description": "Middleware for handling Fabric Authentication",
   "main": "functions/middleware.js",
   "scripts": {
-    "test": "mocha tests"
+    "coverage": "nyc npm test",
+    "make:coverage": "npm run coverage && nyc report --reporter html",
+    "report:coverage": "npm run make:coverage && nyc report --reporter=text-lcov > reports/coverage.lcov && codecov",
+    "review:coverage": "npm run make:coverage && http-server -p 8000 reports/coverage",
+    "test": "NODE_ENV=test mocha tests"
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,26 @@
   },
   "homepage": "https://github.com/FabricLabs/fabric-auth-middleware#readme",
   "dependencies": {
-    "@fabric/core": "github:FabricLabs/fabric#security/dependencies"
+    "@fabric/core": "github:FabricLabs/fabric#security/dependencies",
+    "@fabric/http": "github:FabricLabs/fabric-http#feature-cuts"
+  },
+  "devDependencies": {
+    "codecov": "^3.8.3",
+    "express": "^4.18.1",
+    "http-server": "^14.1.0",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "exclude": [
+      "assets",
+      "contracts",
+      "currencies",
+      "functions",
+      "tests",
+      "data"
+    ],
+    "report-dir": "./reports/coverage",
+    "temp-dir": "./reports/nyc"
   }
 }

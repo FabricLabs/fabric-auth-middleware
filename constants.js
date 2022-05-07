@@ -1,0 +1,7 @@
+const HTTP_IDENTITY_HEADER_NAME = 'X-Auth-Identity';
+const HTTP_SIGNATURE_HEADER_NAME = 'X-Request-Signature';
+
+module.exports = {
+  HTTP_IDENTITY_HEADER_NAME,
+  HTTP_SIGNATURE_HEADER_NAME
+}

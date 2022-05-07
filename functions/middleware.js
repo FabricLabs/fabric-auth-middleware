@@ -1,11 +1,22 @@
-module.exports = function FabricMiddleware (request, response, next) {
-  if (request.headers['x-auth-identity']) {
-    return response.send({
-      status: 'debug',
-      content: `Header "X-Auth-Identity" was provided: ${request.headers['x-auth-identity']}`
-    });
+'use strict';
+
+const {
+  HTTP_IDENTITY_HEADER_NAME,
+  HTTP_SIGNATURE_HEADER_NAME
+} = require('../constants');
+
+const HTTP_IDENTITY_HEADER_NAME_LOWER = HTTP_IDENTITY_HEADER_NAME.toLowerCase();
+const HTTP_SIGNATURE_HEADER_NAME_LOWER = HTTP_SIGNATURE_HEADER_NAME.toLowerCase();
+
+const Identity = require('@fabric/core/types/identity');
+
+module.exports = function FabricAuthenticationMiddleware (request, response, next) {
+  request.identity = null;
+
+  if (request.headers[HTTP_IDENTITY_HEADER_NAME_LOWER]) {
+    request.identity = Identity.fromString(request.headers[HTTP_IDENTITY_HEADER_NAME_LOWER]);
   } else {
-    console.debug(`[WARNING] No "X-Auth-Identity" header.  Consider rejecting here.`);
+    console.debug(`[WARNING] No "${HTTP_IDENTITY_HEADER_NAME}" header.  Consider rejecting here.`);
   }
 
   return next();
