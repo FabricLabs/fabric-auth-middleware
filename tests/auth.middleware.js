@@ -22,6 +22,12 @@ const settings = {
   port: 11392
 };
 
+// Sample
+const secret = {
+  status: 'PAUSED',
+  message: 'Access granted!  This is the document you were looking for.'
+};
+
 // Tests
 describe('fabric-auth-middleware', function () {
   describe('FabricAuthenticationMiddleware()', function () {
@@ -40,10 +46,20 @@ describe('fabric-auth-middleware', function () {
           }
         });
         this.close();
+
+        assert.equal(result.message, secret.message);
+
         done();
       }
 
+      // Setup
       app.use(FabricAuth);
+
+      // Routes
+      app.use('/', (req, res) => {
+        return res.send(secret);
+      });
+
       app.listen(settings.port, _handleReady);
 
       assert.ok(app);
