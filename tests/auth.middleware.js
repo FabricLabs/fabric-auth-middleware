@@ -29,7 +29,7 @@ const secret = {
 };
 
 // Tests
-describe('fabric-auth-middleware', function () {
+describe('@fabric/connect', function () {
   describe('FabricAuthenticationMiddleware()', function () {
     it('is available from @fabric/core', function () {
       assert.equal(FabricAuth instanceof Function, true);

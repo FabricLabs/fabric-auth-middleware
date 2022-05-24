@@ -1,4 +1,4 @@
-# fabric-auth-middleware
+# @fabric/connect
 Middleware for Fabric Auth
 
 ## Example Usage
@@ -9,7 +9,7 @@ Middleware for Fabric Auth
 const express = require('express');
 
 // Middleware
-const attachFabric = require('fabric-auth-middleware');
+const attachFabric = require('@fabric/connect');
 
 // Settings
 const settings = require('../settings/local');

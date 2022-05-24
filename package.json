@@ -1,5 +1,5 @@
 {
-  "name": "fabric-auth-middleware",
+  "name": "@fabric/connect",
   "version": "0.1.0",
   "description": "Middleware for handling Fabric Authentication",
   "main": "functions/middleware.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FabricLabs/fabric-auth-middleware.git"
+    "url": "git+https://github.com/FabricLabs/fabric-connect.git"
   },
   "keywords": [
     "fabric",
@@ -24,9 +24,9 @@
   "author": "Fabric Labs, Inc.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FabricLabs/fabric-auth-middleware/issues"
+    "url": "https://github.com/FabricLabs/fabric-connect/issues"
   },
-  "homepage": "https://github.com/FabricLabs/fabric-auth-middleware#readme",
+  "homepage": "https://github.com/FabricLabs/fabric-connect#readme",
   "dependencies": {
     "@fabric/core": "github:FabricLabs/fabric#security/dependencies",
     "@fabric/http": "github:FabricLabs/fabric-http#feature-cuts"
